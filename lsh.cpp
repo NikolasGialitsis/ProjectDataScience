@@ -382,6 +382,7 @@ void EuclideanLSH(int n,int L,int K,int d,int W,string query_path,std::vector<Po
 	output<<"Average Query Time : "<<average_time/((float)query_points) << " seconds"<<std::endl;
 	output<<"Approx "<<approx/found_items<<std::endl;
 	output<<"Max Ratio :"<<max_ratio<<std::endl;
+	output<<"Space :"<<space<<" bits"<<std::endl;
 	output<<"*********************"<<std::endl;
 
 	input_queries.close();
@@ -821,6 +822,7 @@ void CosineLSH(int n,std::vector<Point>& dataset,int K,int L,int d,string& query
 		assert(min_dist >= true_min_dist);
 		if(nearest_id != -1){
 			data_type p_error = min_dist/true_min_dist;
+			approx += p_error;
 			if(p_error >= max_ratio)max_ratio = p_error;
 			found_items++;
 		}
@@ -833,6 +835,7 @@ void CosineLSH(int n,std::vector<Point>& dataset,int K,int L,int d,string& query
 	output<<"Average Query Time : "<<average_time/((float)query_points) << " seconds"<<std::endl;
 	output<<"Mean LSH ratio: "<<approx/(float)found_items<<std::endl;
 	output<<"Max Ratio :"<<max_ratio<<std::endl;
+	output<<"Space :"<<space<<" bits"<<std::endl;
 	output<<"*********************"<<std::endl;
 
 	input_queries.close();
@@ -884,8 +887,6 @@ int main(int argc,char *argv[]){
 	int W = 350;
 	int n;
 	long long M;
-
-
 
 	//Initialization
 	if(argc == 1){

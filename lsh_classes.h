@@ -22,12 +22,11 @@ public:
 	}
 	Point(string s){
 
-		/*int loc = s.find("\t");
-		string temp = s.substr(0,loc);
-		this->item_id = atoi(temp.c_str());
-		this->fields.assign(s);
-		*/
+		//int loc = s.find("\t");
+		//string temp = s.substr(0,loc);
 		this->item_id = id++;
+		
+		this->fields.assign(s);
 		space += sizeof(int);
 		space += s.size();
 	}
